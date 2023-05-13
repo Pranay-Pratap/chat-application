@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+
+    <h3>Create your account!</h3>
+    <form method="post" action="/signup/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>&ensp;
+            <input type="text" class="form-control" id="username" name="username" placeholder="Create A Username (use only letters and numbers)" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="full_name">Full Name</label>&ensp;
+            <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter Your Full Name" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="phone_number">Phone Number</label>&ensp;
+            <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Your Phone Number" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="country">Country</label>&ensp;
+            <input type="text" class="form-control" id="country" name="country" placeholder="Enter Your country" Required>
+        </div><br>
+        <div class="form-grouo">
+            <label for="gender">Gender</label>&ensp;
+            <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter your gender" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="list">Interest</label>&ensp;
+            <input type="list" class="form-control" id="interest" name="interest" placeholder="Enter Your interest" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="email">Email</label>&ensp;
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="pass1">Password</label>&ensp;
+            <input type="password" class="form-control" id="password" name="password" placeholder="Create Your Password" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="pass2">Confirm Password</label>&ensp;
+            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirm Your Password" Required>
+        </div><br>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+</body>
+</html>

@@ -7,9 +7,34 @@
 {% endblock title %}
 
 {% block content %}
+    <head>
     <div id="alert-box"></div>
-    <div id="messages-box"></div>
+    <style>
+        /* style the button */
+		.button {
+            background-color: blue;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+        </style>
+    </head>
+    <button type="submit"><a href="/logout/?username={{username}}">Log Out</a></button><br><br>
+    <body>
+        <b>~~ Related User ~~</b><br>
+        <b>Name:</b> {{ related_user.full_name }}<br>
+        <b>Country:</b> {{ related_user.country }}<br>
+        <b>Gender:</b> {{ related_user.gender }}<br>
+        <b>Intrest:</b> {{ related_user.interest|join:", " }}<br><br>
+        
+    </body>
 
+    <div id="messages-box"></div>
     <input type="text" id="message-input" class="form-control" placeholder="your message">
     <button id="send-btn" class="btn btn-primary mt-2">Send</button>
 {% endblock content %}

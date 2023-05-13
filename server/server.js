@@ -17,8 +17,7 @@ io.on('connection', socket => {
     console.log(socket.id)
 
     socket.join(room)
-    // io.to(room).emit("Welcome", "a new user joined the room")
-    socket.broadcast.emit("Welcome2", "a new user joined the room !!!!")
+    socket.broadcast.emit("Welcome", "A new user joined the room ")
     socket.on('message', msg => {
         console.log(msg)
         io.emit('messageToClient',msg)

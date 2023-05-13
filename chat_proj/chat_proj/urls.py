@@ -24,7 +24,7 @@ from .views import main_view
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("app_auth.urls")),
-    path("chat/", main_view, name="main")
+    path("chat/", main_view, name="chat")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

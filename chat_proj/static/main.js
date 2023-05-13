@@ -5,9 +5,6 @@ const messagesBox = document.getElementById("messages-box")
 const messageInput = document.getElementById("message-input")
 const sendBtn = document.getElementById("send-btn")
 
-// socket.on("Welcome", msg =>{
-//     console.log(msg)
-// })
 
 const handleAlerts = (msg,type) =>{
     alertBox.innerHTML = `
@@ -18,7 +15,7 @@ const handleAlerts = (msg,type) =>{
     setTimeout(() => alertBox.innerHTML = "", 5000)
 }
 
-socket.on("Welcome2", msg =>{
+socket.on("Welcome", msg =>{
     handleAlerts(msg,"primary")
 })
 

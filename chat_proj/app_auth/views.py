@@ -7,6 +7,7 @@ from chat_proj import settings
 
 from .models import users
 from .serializers import UserDetailSerializer
+from .models.connection_users_info import ConnectedUser
 
 
 def homeView(request):
@@ -83,8 +84,10 @@ def loginView(request):
             if user.password == pass1:
                 request.session['email'] = email
                 messages.success(request, "Successfully Logged in!!")
-                user.backend = settings.AUTHENTICATION_BACKENDS[0]
+                # user.backend = settings.AUTHENTICATION_BACKENDS[0]
                 login(request, user)
+                user.is_active = True
+                user.save()
                 full_name = user.full_name
                 is_active = user.is_active
                 username = user.username
@@ -109,6 +112,10 @@ def logoutView(request):
     user = users.objects.get(username=username)
     user.is_active = False
     user.save()
+
+    ConnectedUser.objects.filter(username=username).delete()
+    ConnectedUser.objects.filter(connected_username=username).delete()
+
     logout(request)
     messages.success(request, "Successfully Logged out!!")
     return redirect('home')
